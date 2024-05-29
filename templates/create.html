@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}
+  Home
+{% endblock title %}
+{% block body %}
+    <div class="container my-5">
+    <h2>Add on Todo</h2>
+    <form action="/create", method="POST">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" name="title" id="title">
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input type="text" class="form-control" name="description" id="desc">
+      </div>
+      <button type="submit" class="btn btn-outline-dark">Add on Todo</button>
+    </form>
+  </div>
+{% endblock body %}

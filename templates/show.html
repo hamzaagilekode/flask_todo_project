@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}
+  View
+{% endblock title %}
+{% block body %}
+<div class="container mt-5">
+  <div class="card text-center">
+    <div class="card-header">
+      Todo
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{todo.title}}</h5>
+      <p class="card-text">{{todo.description}}</p>
+      <a href="/update/{{todo.id}}" class="btn btn-outline-dark">Update</a>
+    </div>
+    <div class="card-footer text-body-secondary">
+      {{todo.date_created.strftime("%d %b, %Y")}}
+    </div>
+  </div>
+</div>
+{% endblock body %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}
+  Home
+{% endblock title %}
+{% block body %}
+  <div class="container my-5 d-flex justify-content-center">
+    <a href="/create" class="btn btn-dark btn-lg" role="button" aria-pressed="true">Create New Todo</a>
+  </div>
+  <div class="container my-5">
+    <h2>My Todo</h2>
+    {% if todos|length == 0 %}
+    <div class="alert alert-light" role="alert">
+      No Todo found. Add your first Todo now!
+    </div>
+    {% else %}
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">SNo</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for todo in todos %}
+            <tr>
+              <th scope="row">{{loop.index}}</th>
+              <td>{{todo.title}}</td>
+              <td>{{todo.description}}</td>
+              <td><time>{{todo.date_created.strftime("%d %b, %Y")}}</time></td>
+              <td>
+                <a href="/show/{{todo.id}}" type="button" class="btn btn-outline-dark btn-sm mx-2">View</button>
+                <a href="/update/{{todo.id}}" type="button" class="btn btn-outline-dark btn-sm mx-2">Update</button>
+                <a href="/delete/{{todo.id}}" type="button" class="btn btn-outline-dark btn-sm mx-2">Delete</button>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+  </div>
+{% endblock body %}
